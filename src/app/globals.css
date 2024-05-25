@@ -2,32 +2,193 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+:root{
+  --navHomeActive: #fb8b24;
+  --navHomeShadow: #e36414;
+  --bgHome: rgba(193, 225, 193, 1);
+
+  --navAboutActive: #b8b8ff;
+  --navAboutShadow: #8585b8;
+  --bgAbout: #9898e4;
+
+  --navProjectsActive: #3673fd;
+  --navProjectsShadow: #2755c0;
+  --bgProjects: #2356cf;
+
+  
+  --navcolorInactive: #919191;
+  --navcolorInactiveShadow: #585858;
+  --bgSoft: #202020;
+  --bgContrast: #222220;
+  
+  --text: "black";
+  --textHighlight: #f26419;
+  --textGold: #FFD700;
+  --textSoft2: #FAF9F6;
+  --textSoft: rgba(255, 255, 255, 0.6);
+  --btn: #3673fd;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{ /* the background */
+  background-color: var(--bgHome);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 98vh;
+  margin: 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+@keyframes moveBackground {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -50px 0;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(90deg, rgba(173,216,230,1) 3px, transparent 1px),
+    linear-gradient(rgba(173,216,230,1) 3px, transparent 1px);
+  background-size: 50px 50px;
+  animation: moveBackground 5s linear infinite;
+  z-index: 0;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+body::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(90deg, rgba(0, 0, 0, 0.5) 2px, transparent 5px),
+    linear-gradient(rgba(0, 0, 0, 0.5) 2px, transparent 5px);
+  background-size: 50px 50px;
+  filter: blur(4px);
+  transform: translate(-10px, 13px);
+  animation: moveBackground 4s linear infinite;
+  z-index: -1;
+}
+
+.outer-container {
+  position: relative;
+  z-index: 1;
+}
+
+a{
+  text-decoration: none;
+}
+
+.outer-container { /* the container containing the contents */
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 60%;
+  height: 80%; /*CHANGE THIS BACK TO 80%*/
+  border-radius: 10px;
+  
+} 
+
+.container{ /* the purple background container, for the contents like text */
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background:
+    url('../../public/paper_texture.jpg'),
+    linear-gradient(to bottom right, var(--bgSoft) 50%, var(--bgContrast) 50%);
+  background-blend-mode: multiply;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.8);
+  border: var(--textSoft) solid 1px;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+.navbar{ /* the navbar positioning */
+  position: absolute;
+  top: 60px;
+  left: 450px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  z-index: 55;
+}
+
+.transitionbox{ /* the transition box */
+  position: absolute;
+  display: flex-start;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  z-index: 50;
+}
+
+
+.textContainer{ /* the container for the text */
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+/*
+@media (max-width: 1536px) {
+  .container{
+      width: 1366px;
   }
 }
+
+@media (max-width: 1366px) {
+  .container{
+      width: 1280px;
+  }
+}
+
+@media (max-width: 1280px) {
+  .container{
+      width: 1024px;
+      padding-left: 20px;
+      padding-right: 20px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .container{
+      width: 768px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container{
+      width: 640px;
+  }
+}
+
+@media (max-width: 640px) {
+  .container{
+      width: 475px;
+  }
+}
+*/

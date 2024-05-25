@@ -1,0 +1,103 @@
+.navbar{
+    display: flex;
+}
+
+.navbar > *:not(:last-child) {
+    margin-right: 30px;
+}
+
+.linkInactive, .linkActive {
+    color: white;
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    padding: 20px 10px;
+    text-decoration: none;
+    font-size: 1rem;
+    text-align: center;
+    border-radius: 2px;
+    transition: 
+        background-color 0.3s ease-in-out, 
+        box-shadow 0.2s ease-in-out, 
+        transform 0.2s ease-in-out,
+        transition-duration 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+
+.linkHome{
+    --navcolorActive: var(--navHomeActive);
+    --navcolorActiveShadow: var(--navHomeShadow);
+}
+
+.linkAbout{
+    --navcolorActive: var(--navAboutActive);
+    --navcolorActiveShadow: var(--navAboutShadow);
+}
+
+.linkProjects{
+    --navcolorActive: var(--navProjectsActive);
+    --navcolorActiveShadow: var(--navProjectsShadow);
+}
+
+.linkInactive{
+    color: black;
+    background-color: var(--navcolorInactive);
+    box-shadow: 
+      0.35em 0.35em 0 0 var(--navcolorInactiveShadow);
+}
+
+.linkActive{
+    transform: translate(0.35em, 0.35em);
+    color: white;
+    background-color: var(--navcolorActive);
+    box-shadow: 
+      0 0 0 0 var(--navcolorActiveShadow),
+      inset 6em 3.5em 0 0 var(--navcolorActive);
+}
+
+.linkActive:active{
+    transform: translate(0.43em, 0.43em);
+}
+
+.hoverHome:hover, .hoverHome:focus {
+    color: white;
+    transform: translate(0.14em, 0.14em);
+    box-shadow: 
+      0.2em 0.2em 0 0 var(--navHomeShadow),
+      inset 6em 3.5em 0 0 var(--navHomeActive);
+}
+
+.hoverHome:active {
+    box-shadow: 
+      0 0 0 0 var(--navHomeActive),
+      inset 6em 3.5em 0 0 var(--navHomeActive);
+}
+
+.hoverAbout:hover, .hoverAbout:focus {
+    color: white;
+    transform: translate(0.14em, 0.14em);
+    box-shadow: 
+      0.2em 0.2em 0 0 var(--navAboutShadow),
+      inset 6em 3.5em 0 0 var(--navAboutActive);
+}
+
+.hoverAbout:active {
+    box-shadow: 
+      0 0 0 0 var(--navAboutActive),
+      inset 6em 3.5em 0 0 var(--navAboutActive);
+}
+
+.hoverProjects:hover, .hoverProjects:focus {
+    color: white;
+    transform: translate(0.14em, 0.14em);
+    box-shadow: 
+      0.2em 0.2em 0 0 var(--navProjectsShadow),
+      inset 6em 3.5em 0 0 var(--navProjectsActive);
+}
+
+.hoverProjects:active {
+    box-shadow: 
+      0 0 0 0 var(--navProjectsActive),
+      inset 6em 3.5em 0 0 var(--navProjectsActive);
+}

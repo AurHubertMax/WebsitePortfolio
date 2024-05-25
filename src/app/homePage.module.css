@@ -1,0 +1,92 @@
+.homeContainer{
+    height: 570px;
+    width: 1100px;
+}
+  
+.welcomeMessageContainer{
+    position: relative;
+    justify-content: center;
+    display: flex;
+    padding-top: 50px;
+    font-size: 20px;
+    color: var(--textSoft2);
+}
+
+  
+.nameContainer{
+    width: auto;
+    height: auto;
+    margin-left: 50px;
+    margin-right: 50px;
+    padding-bottom: 40px;
+    display: flex;
+    position: relative;
+    justify-content: flex-start;
+    align-items: center;
+    filter:brightness(0.8);
+}
+
+.svgWrapper{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    stroke: var(--textSoft2);
+    stroke-width: 0.3;
+    opacity: 1;
+    stroke-linejoin: square;
+    stroke-linecap: square;
+}
+  /*background-color: rgba(255, 255, 255, 0.6);*/
+
+.lineContainer {
+    height: 2px;
+    background: var(--textSoft2);
+    transform-origin: center;
+    margin-bottom: 15px;
+    margin-top: -20px;
+    width: 50%;
+    margin-left: 270px;
+    filter:brightness(0.8);
+}
+  
+.descriptionContainer{
+    position: relative;
+    justify-content: center;
+    display: flex;
+    font-size: 25px;
+    color: var(--textSoft2);
+    filter:brightness(0.8);
+}
+
+.iconContainer{
+    display: flex;
+    position: relative;
+    margin: 150px;
+    margin-right: 200px;
+    margin-left: 200px;
+    justify-content: center;
+    align-items: center;
+    filter:brightness(0.8);
+    color: var(--navcolorInactive);
+    z-index: 50;
+}
+
+.iconSvgWrapper{
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    padding-left: 65px;
+    stroke: var(--textSoft2);
+    stroke-width: 1;
+    opacity: 1;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+}
+
+.iconSvgWrapper:hover{
+    stroke: var(--navHomeActive);
+    cursor: pointer;
+}
