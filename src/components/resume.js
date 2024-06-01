@@ -1,45 +1,52 @@
 "use client"
 
-import {useRef, useEffect} from 'react'
+import {useRef, useEffect, useState} from 'react'
+import styles from './resume.module.css'
 
 const Resume = ({scrollYProgress}) => {
 
     const pathsRef = useRef(null);
+    const [hoverEnabled, setHoverEnabled] = useState(false);
 
     useEffect(() => {
         pathsRef.current = document.querySelectorAll('path');
         fillSvgPaths(pathsRef.current);
-        const unsubscribe = scrollYProgress.onChange(() => fillSvgPaths(pathsRef.current));
+        const unsubscribe = scrollYProgress.onChange(() => {
+            fillSvgPaths(pathsRef.current);
+            if (scrollYProgress.get() > 0.99) {
+                setHoverEnabled(true);
+            }
+            else {
+                setHoverEnabled(false);
+            }
+        });
         return () => unsubscribe();
-    }, []); // Empty dependency array means this effect runs once on mount
+    }, []); 
 
     function fillSvgPaths(paths) {
         for (let i = 0; i < paths.length; i++) {
             let path = paths[i];
-            let pathLength = path.getTotalLength();
-            path.style.strokeDasharray = pathLength;
-    
-            let drawLength = pathLength * scrollYProgress.get();
-    
-            path.style.transition = 'stroke-dashoffset 1s, stroke-opacity 1s, fill-opacity 1s';
-            path.style.strokeDashoffset = pathLength - drawLength;
-            path.style.strokeOpacity = scrollYProgress.get();
-
-            
-            // Calculate fill opacity
-            let fillOpacity = 0;
-            if (scrollYProgress.get() > 0.9) {
-                fillOpacity = (scrollYProgress.get() - 0.5) * 2;
+            if (path instanceof SVGPathElement) {
+                let pathLength = path.getTotalLength();
+                path.style.strokeDasharray = pathLength;
+        
+                let drawLength = pathLength * scrollYProgress.get();
+        
+                path.style.transition = 'stroke-dashoffset 1s, stroke-opacity 0s';
+                path.style.strokeDashoffset = pathLength - drawLength;
             }
-            path.style.fillOpacity = fillOpacity;
-
-            path.style.fill = "var(--navAboutShadow)";
         }
     }
 
 
     return (
-        <div className='h-full w-full'>
+        <div className={`${hoverEnabled ? styles.resumeHover : styles.resume}`}
+            onClick={() => {
+                if (hoverEnabled) {
+                    window.open('/Aureliano_Hubert_Maximus_Resume_2024.pdf', '_blank');
+                }
+            }}
+        >
             <svg style={{
                 width: "500px", 
                 height: "500px",

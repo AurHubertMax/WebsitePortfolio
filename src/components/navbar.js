@@ -12,9 +12,11 @@ const Navbar = () => {
 
     return (
         <div className={styles.navbar}>
+            
             {links.map((link) => (
                 <NavLink link={link} key={link.title} />
             ))}
+            
         </div>
     );
 };

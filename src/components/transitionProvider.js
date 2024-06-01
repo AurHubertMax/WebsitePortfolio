@@ -4,32 +4,33 @@ import { AnimatePresence } from "framer-motion"
 import { motion } from 'framer-motion'
 import Navbar from '@/components/navbar'
 import { usePathname } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 
+const getColor = (path) => {
+    switch(path) {
+        case '/':
+            return '#ca5c17';
+        case '/about':
+            return '#9898e4';
+        case '/projects':
+            return '#2356cf';
+        default:
+            return '#ca5c17';
+    }
+}
 
 const TransitionProvider = ({ children }) => {
     const pathName = usePathname();
     const [isAnimating, setIsAnimating] = useState(true);
 
-    const getColor = (path) => {
-        switch(path) {
-            case '/':
-                return '#ca5c17';
-            case '/about':
-                return '#9898e4';
-            case '/projects':
-                return '#2356cf';
-            default:
-                return '#ca5c17';
-        }
-    }
+    
     const [backgroundColor, setBackgroundColor] = useState(getColor(pathName));
 
     useEffect(() => {
         setIsAnimating(true);
         const timer = setTimeout(() => {
             setIsAnimating(false);
-        }, 500);
+        }, 500); 
         console.log('timer set');
         return () => clearTimeout(timer);
     }, [pathName]);
@@ -39,13 +40,50 @@ const TransitionProvider = ({ children }) => {
         setBackgroundColor(getColor(pathName));
     }
 
+    const containerRef = useRef();
+    const blurBoxRef = useRef();
+    const navbarRef = useRef();
+    const AnimatePresenceRef = useRef();
+
+    useEffect(() => {
+        const container = containerRef.current;
+        const blurBox = blurBoxRef.current;
+        const navbar = navbarRef.current;
+        const AnimatePresence = AnimatePresenceRef.current;
+
+        const handleMouseMove = (e) => {
+            let xRotation = (0.5 - e.clientY / window.innerHeight ) * 20;
+            let yRotation = (0.5 - e.clientX / window.innerWidth ) * -20;
+        
+            xRotation = Math.max(Math.min(xRotation, 10), -10);
+            yRotation = Math.max(Math.min(yRotation, 10), -10);
+
+            const translateY = Math.abs(xRotation) * 0.5;
+            container.style.transform = `rotateX(${xRotation}deg) rotateY(${yRotation}deg)`;
+        
+
+            blurBox.style.transform = `rotateX(${xRotation}deg) rotateY(${yRotation}deg) translateY(${translateY}px)`;
+            navbar.style.transform = `rotateX(${xRotation}deg) rotateY(${yRotation}deg) translateY(${translateY}px)`;
+        };
+
+        document.addEventListener("mousemove", handleMouseMove);
+
+        return () => {
+            document.removeEventListener("mousemove", handleMouseMove);
+        }
+    }, [pathName]);
+
+
+
     return (
         <AnimatePresence>
-            <div className='navbar'>
+            <div className='blurBox' ref={blurBoxRef}/>
+            <div className='navbar' ref={navbarRef}>
                 <Navbar />
             </div>
+            
             <div className='outer-container'>
-                <div key={pathName} className='container' >
+                <div key={pathName} className='container' ref={containerRef}>
                     <motion.div className="transitionbox"
                         style={{transformOrigin: "top left", borderRadius: "10px", backgroundColor: getColor(pathName)}}
                         initial={{ scaleX: 0, scaleY: 0, opacity: 1 }}

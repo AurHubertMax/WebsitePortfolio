@@ -1,0 +1,117 @@
+.projectsContainer{
+    margin-top: 60px;
+    height: 80vh;
+    width: 126vh;
+    display: grid;
+    overflow: hidden;
+    list-style: none;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 15px;
+    padding: 15px;
+    /*background: rgba(255, 255, 255, 0.2);*/
+    align-items: center; /* Add this line */
+    justify-items: center; /* Add this line */
+    overflow-y: auto;
+    z-index: 55;
+}
+
+.cardContainer{
+    margin-top: 100px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border: none;
+    background-color: var(--bgContrast);
+    padding: 10px;
+    border-radius: 10px;
+    transition: all 0.3s ease; 
+    z-index: 2;
+}
+
+.iconSvgWrapper{
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    margin-top: 500px;
+    stroke: var(--textSoft2);
+    stroke-width: 1px;
+    opacity: 1;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+    z-index: 1;
+}
+
+.cardContainer:hover{
+    transform: scale(1.1);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.8);
+    cursor: pointer;
+}
+
+.cardContainer:active{
+    transform: scale(1);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.8);
+}
+
+.cardContainer::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    
+    border-radius: 10px;
+    transition: all 0.1s ease; 
+}
+
+.cardContainer:hover::before{
+    transform: rotate(5deg) scale(1.1);
+    border: var(--navProjectsActive) 2px solid;
+}
+
+.cardContainer:active::before{
+    border: var(--navProjectsActive) 2px solid; 
+    transform: rotate(0deg) scale(1);
+}
+
+
+.cardHeaderContainer{
+    display: flex;
+    flex-direction: column;
+}
+
+.cardTitle{
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--textSoft);
+    text-rendering: optimizeLegibility; /* Add this line */
+    -webkit-font-smoothing: antialiased; /* Add this line */
+    -moz-osx-font-smoothing: grayscale; /* Add this line */
+}
+
+.cardDescription{
+    font-size: 1rem;
+    color: var(--textSoft);
+    max-width: 160px;
+}
+
+.cardDate{
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: var(--textSoft);
+}
+
+.cardImageContainer{
+    display: flex;
+    flex-direction: row;
+    width: 200px; /* This sets the width of the image */
+    height: 200px; /* This sets the height of the image */
+    border-radius: 10px;
+    object-fit: cover; /* This makes the image cover the entire area of the element, cropping it if necessary */
+}
+
+.cardImage{
+    border-radius: 10px;
+}
+

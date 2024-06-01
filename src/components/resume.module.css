@@ -1,0 +1,24 @@
+.resume{
+    fill: none;
+}
+
+
+.resumeHover {
+    fill: none;
+    transition: fill 1s ease, transform 0.3s ease;
+}
+
+.resumeHover:hover {
+    fill: var(--navAboutActive);
+    cursor: pointer;
+    animation: bounce 0.5s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }

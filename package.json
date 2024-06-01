@@ -10,7 +10,11 @@
   },
   "dependencies": {
     "@next/font": "^14.2.3",
+    "@nextui-org/card": "^2.0.30",
+    "@nextui-org/react": "^2.4.1",
+    "@react-three/fiber": "^8.16.6",
     "framer-motion": "^11.2.4",
+    "framer-motion-3d": "^11.2.9",
     "gsap": "^3.12.5",
     "next": "14.2.3",
     "react": "^18",
@@ -18,6 +22,7 @@
     "react-helmet": "^6.1.0",
     "react-icons": "^5.2.1",
     "react-svg": "^16.1.34",
+    "three": "^0.164.1",
     "typewriter-effect": "^2.21.0"
   },
   "devDependencies": {
