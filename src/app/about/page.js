@@ -50,7 +50,7 @@ const AboutPage = () => {
         <div className={styles.textContainer} >
             {/* ABOUT ME */}
             <div className={styles.biography}>
-                <h1 className={styles.biographyTitle}>WHO AM I</h1>
+                <h1 className={styles.biographyTitle}>ABOUT ME</h1>
                 <p className={styles.biographyText}>
                     I am a recent graduate with a Bachelor of Science in Computer Science from the University of Kansas, and I am passionate about leveraging technology to create 
                     efficient, user-friendly applications. My projects range from a <a className={styles.link} href='https://github.com/DevinRS/Capstone_Project' target="_blank" rel="noopener noreferrer">Machine Learning Web Application </a> 
@@ -245,14 +245,17 @@ const AboutPage = () => {
                     
                 </div>
             </div>
-            <p className='opacity-0'>Filler</p>
-            <p className='opacity-0'>Filler</p>
+
         </div>
         {/* SVG */}
+        
         <div className={styles.svgContainer}>
 
             <Resume scrollYProgress={scrollYProgress} />
             
+        </div>
+        <div>
+            <img className={styles.portrait} src="/Graduation_photo_cut.jpg" alt="About Page SVG" />
         </div>
     </div>
   );

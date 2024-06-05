@@ -1,19 +1,78 @@
 .projectsContainer{
-    margin-top: 60px;
+    margin-top: -100px;
     height: 80vh;
     width: 126vh;
     display: grid;
-    overflow: hidden;
     list-style: none;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-rows: repeat(1, 1fr);
     gap: 15px;
     padding: 15px;
-    /*background: rgba(255, 255, 255, 0.2);*/
     align-items: center; /* Add this line */
     justify-items: center; /* Add this line */
-    overflow-y: auto;
-    z-index: 55;
+    overflow: auto;
+    z-index: 60;
+}
+
+.iconSvgWrapper{
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    margin-top: 500px;
+    stroke: var(--navProjectsActive);
+    stroke-width: 1px;
+    opacity: 1;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+    z-index: 1;
+}
+
+.card1Border{
+    position: absolute;
+    border: var(--navProjectsActive) 5px solid;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.8);
+    background-color: var(--bgContrast);
+    border-radius: 5px;
+    padding-right: 950px;
+    padding-bottom: 470px;
+    top: 130px;
+    left: 100px;
+}
+
+.card2Border{
+    position: absolute;
+    border: var(--navProjectsActive) 5px solid;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.8);
+    background-color: var(--bgContrast);
+    border-radius: 5px;
+    padding-right: 650px;
+    padding-bottom: 490px;
+    top: 130px;
+    left: 450px;
+}
+
+.card3Border{
+    position: absolute;
+    border: var(--navProjectsActive) 5px solid;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.8);
+    background-color: var(--bgContrast);
+    border-radius: 5px;
+    padding-right: 700px;
+    padding-bottom: 430px;
+    top: 90px;
+    left: 10px;
+}
+
+.card4Border{
+    position: absolute;
+    border: var(--navProjectsActive) 5px solid;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.8);
+    background-color: var(--bgContrast);
+    border-radius: 5px;
+    padding-right: 900px;
+    padding-bottom: 500px;
+    top: 90px;
+    left: 90px;
 }
 
 .cardContainer{
@@ -27,25 +86,21 @@
     border-radius: 10px;
     transition: all 0.3s ease; 
     z-index: 2;
-}
-
-.iconSvgWrapper{
-    position: absolute;
     justify-content: center;
     align-items: center;
-    margin-top: 500px;
-    stroke: var(--textSoft2);
-    stroke-width: 1px;
-    opacity: 1;
-    stroke-linejoin: round;
-    stroke-linecap: round;
-    z-index: 1;
+    text-align: center;
+    text-wrap: wrap;
 }
+
+
 
 .cardContainer:hover{
     transform: scale(1.1);
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.8);
     cursor: pointer;
+    filter: none;
+    background-color: var(--navProjectsActive);
+    
 }
 
 .cardContainer:active{
@@ -53,47 +108,26 @@
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.8);
 }
 
-.cardContainer::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    
-    border-radius: 10px;
-    transition: all 0.1s ease; 
-}
-
-.cardContainer:hover::before{
-    transform: rotate(5deg) scale(1.1);
-    border: var(--navProjectsActive) 2px solid;
-}
-
-.cardContainer:active::before{
-    border: var(--navProjectsActive) 2px solid; 
-    transform: rotate(0deg) scale(1);
+.cardContainer:hover .cardTitle,
+.cardContainer:hover .cardDescription,
+.cardContainer:hover .cardDate,
+.cardContainer:hover .cardImageContainer{
+    color: var(--textSoft2);
+    filter: none;
 }
 
 
 .cardHeaderContainer{
     display: flex;
     flex-direction: column;
+    
 }
 
 .cardTitle{
     font-size: 1.5rem;
     font-weight: bold;
     color: var(--textSoft);
-    text-rendering: optimizeLegibility; /* Add this line */
-    -webkit-font-smoothing: antialiased; /* Add this line */
-    -moz-osx-font-smoothing: grayscale; /* Add this line */
-}
-
-.cardDescription{
-    font-size: 1rem;
-    color: var(--textSoft);
-    max-width: 160px;
+    
 }
 
 .cardDate{
@@ -105,13 +139,135 @@
 .cardImageContainer{
     display: flex;
     flex-direction: row;
-    width: 200px; /* This sets the width of the image */
-    height: 200px; /* This sets the height of the image */
-    border-radius: 10px;
-    object-fit: cover; /* This makes the image cover the entire area of the element, cropping it if necessary */
+    width: 200px; 
+    height: 200px; 
+    object-fit: cover; 
+    filter: grayscale(100%);
 }
+
 
 .cardImage{
-    border-radius: 10px;
+    border-radius: 5px;
+
 }
 
+.cardExtensionDesc{
+    font-size: 1.2rem;
+    font-weight: bolder;
+    color: var(--textSoft2);
+}
+
+.cardExtensionTech{
+    font-size: 1rem;
+    font-weight: bold;
+    word-spacing: 30px;
+    color: var(--textSoft);
+}
+
+.card1TextContainer {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    left: 300px;
+    top: 170px;
+    padding: 10px;
+    text-align: wrap;
+    max-width: 500px;
+    border-radius: 5px;
+    
+    /*border: var(--navProjectsActive) 2px solid;*/
+}
+
+.card1Pictures {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    top: 230px;
+    gap: 20px;
+    width: 350px; 
+    height: 180px; 
+    object-fit: cover; 
+}
+
+.card2TextContainer {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    left: 600px;
+    top: 170px;
+    padding: 10px;
+    text-align: wrap;
+    max-width: 400px;
+    border-radius: 5px;
+    
+    /*border: var(--navProjectsActive) 2px solid;*/
+}
+
+.card2Pictures {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    top: 130px;
+    gap: 20px;
+    width: 350px; 
+    height: 300px; 
+    object-fit: cover; 
+}
+
+.card3TextContainer {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    left: 180px;
+    top: 100px;
+    padding: 10px;
+    max-width: 400px;
+    border-radius: 5px;
+    
+    /*border: var(--navProjectsActive) 2px solid;*/
+}
+
+.card3Pictures {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    top: 130px;
+    right: 2px;
+    gap: 20px;
+    width: 550px; 
+    height: 280px; 
+    object-fit: cover; 
+}
+
+.card4TextContainer {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    left: 450px;
+    top: 100px;
+    padding: 10px;
+    max-width: 400px;
+    border-radius: 5px;
+    
+    /*border: var(--navProjectsActive) 2px solid;*/
+}
+
+.card4Pictures {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    top: 90px;
+    right: -20px;
+    gap: 20px;
+    width: 750px; 
+    height: 380px; 
+    object-fit: cover; 
+}
+
+
+
+.invisible {
+    opacity: 0;
+}
