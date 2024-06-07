@@ -8,10 +8,11 @@
     grid-template-rows: repeat(1, 1fr);
     gap: 15px;
     padding: 15px;
-    align-items: center; /* Add this line */
-    justify-items: center; /* Add this line */
+    align-items: center; 
+    justify-items: center; 
     overflow: auto;
     z-index: 60;
+    overflow: hidden;
 }
 
 .iconSvgWrapper{
@@ -19,12 +20,16 @@
     justify-content: center;
     align-items: center;
     margin-top: 500px;
-    stroke: var(--navProjectsActive);
-    stroke-width: 1px;
+    stroke: var(--textSoft2);
+    stroke-width: 0.5px;
     opacity: 1;
     stroke-linejoin: round;
     stroke-linecap: round;
     z-index: 1;
+}
+
+.noPointerEvents {
+    pointer-events: none;
 }
 
 .card1Border{
@@ -35,7 +40,7 @@
     border-radius: 5px;
     padding-right: 950px;
     padding-bottom: 470px;
-    top: 130px;
+    top: 100px;
     left: 100px;
 }
 
@@ -46,8 +51,8 @@
     background-color: var(--bgContrast);
     border-radius: 5px;
     padding-right: 650px;
-    padding-bottom: 490px;
-    top: 130px;
+    padding-bottom: 540px;
+    top: 100px;
     left: 450px;
 }
 
@@ -58,7 +63,7 @@
     background-color: var(--bgContrast);
     border-radius: 5px;
     padding-right: 700px;
-    padding-bottom: 430px;
+    padding-bottom: 500px;
     top: 90px;
     left: 10px;
 }
@@ -70,13 +75,14 @@
     background-color: var(--bgContrast);
     border-radius: 5px;
     padding-right: 900px;
-    padding-bottom: 500px;
+    padding-bottom: 530px;
     top: 90px;
     left: 90px;
 }
 
 .cardContainer{
-    margin-top: 100px;
+    margin-top: 150px;
+    height: 500px;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -90,6 +96,7 @@
     align-items: center;
     text-align: center;
     text-wrap: wrap;
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.8);
 }
 
 
@@ -100,7 +107,7 @@
     cursor: pointer;
     filter: none;
     background-color: var(--navProjectsActive);
-    
+    border: none
 }
 
 .cardContainer:active{
@@ -127,7 +134,6 @@
     font-size: 1.5rem;
     font-weight: bold;
     color: var(--textSoft);
-    
 }
 
 .cardDate{
@@ -142,6 +148,7 @@
     width: 200px; 
     height: 200px; 
     object-fit: cover; 
+    margin-top: 50px;
     filter: grayscale(100%);
 }
 
@@ -157,11 +164,44 @@
     color: var(--textSoft2);
 }
 
-.cardExtensionTech{
+.cardExtensionTechLeft{
     font-size: 1rem;
     font-weight: bold;
     word-spacing: 30px;
+    width: fit-content;
+    padding-left: 10px;
+    padding-right: 10px;
     color: var(--textSoft);
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.8);
+}
+
+.cardExtensionTechRight1{
+    font-size: 1rem;
+    font-weight: bold;
+    word-spacing: 30px;
+    width: fit-content;
+    margin-left: 370px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: var(--textSoft);
+    text-align: right;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.8);
+}
+
+.cardExtensionTechRight2{
+    font-size: 1rem;
+    font-weight: bold;
+    word-spacing: 30px;
+    width: fit-content;
+    margin-left: 490px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: var(--textSoft);
+    text-align: right;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.8);
 }
 
 .card1TextContainer {
@@ -169,20 +209,19 @@
     display: flex;
     flex-direction: column;
     left: 300px;
-    top: 170px;
+    top: 120px;
     padding: 10px;
     text-align: wrap;
-    max-width: 500px;
+    max-width: 750px;
     border-radius: 5px;
     
-    /*border: var(--navProjectsActive) 2px solid;*/
 }
 
 .card1Pictures {
     position: absolute;
     display: flex;
     flex-direction: row;
-    top: 230px;
+    top: 200px;
     gap: 20px;
     width: 350px; 
     height: 180px; 
@@ -193,21 +232,19 @@
     position: absolute;
     display: flex;
     flex-direction: column;
-    left: 600px;
-    top: 170px;
+    left: 570px;
+    top: 120px;
     padding: 10px;
     text-align: wrap;
-    max-width: 400px;
+    max-width: 550px;
     border-radius: 5px;
-    
-    /*border: var(--navProjectsActive) 2px solid;*/
 }
 
 .card2Pictures {
     position: absolute;
     display: flex;
     flex-direction: row;
-    top: 130px;
+    top: 200px;
     gap: 20px;
     width: 350px; 
     height: 300px; 
@@ -219,20 +256,18 @@
     display: flex;
     flex-direction: column;
     text-align: right;
-    left: 180px;
+    left: 30px;
     top: 100px;
     padding: 10px;
-    max-width: 400px;
+    max-width: 550px;
     border-radius: 5px;
-    
-    /*border: var(--navProjectsActive) 2px solid;*/
 }
 
 .card3Pictures {
     position: absolute;
     display: flex;
     flex-direction: row;
-    top: 130px;
+    top: 200px;
     right: 2px;
     gap: 20px;
     width: 550px; 
@@ -245,20 +280,19 @@
     display: flex;
     flex-direction: column;
     text-align: right;
-    left: 450px;
+    left: 100px;
     top: 100px;
     padding: 10px;
-    max-width: 400px;
+    max-width: 760px;
     border-radius: 5px;
-    
-    /*border: var(--navProjectsActive) 2px solid;*/
+
 }
 
 .card4Pictures {
     position: absolute;
     display: flex;
     flex-direction: row;
-    top: 90px;
+    top: 130px;
     right: -20px;
     gap: 20px;
     width: 750px; 

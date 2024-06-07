@@ -25,7 +25,7 @@ const TransitionProvider = ({ children }) => {
 
     
     const [backgroundColor, setBackgroundColor] = useState(getColor(pathName));
-
+    
     useEffect(() => {
         setIsAnimating(true);
         const timer = setTimeout(() => {
@@ -34,20 +34,18 @@ const TransitionProvider = ({ children }) => {
         console.log('timer set');
         return () => clearTimeout(timer);
     }, [pathName]);
-
+    
 
     const handleAnimationComplete = () => {
         setBackgroundColor(getColor(pathName));
     }
 
     const containerRef = useRef();
-    const blurBoxRef = useRef();
     const navbarRef = useRef();
     const AnimatePresenceRef = useRef();
 
     useEffect(() => {
         const container = containerRef.current;
-        const blurBox = blurBoxRef.current;
         const navbar = navbarRef.current;
         const AnimatePresence = AnimatePresenceRef.current;
 
@@ -61,8 +59,6 @@ const TransitionProvider = ({ children }) => {
             const translateY = Math.abs(xRotation) * 0.5;
             container.style.transform = `rotateX(${xRotation}deg) rotateY(${yRotation}deg)`;
         
-
-            blurBox.style.transform = `rotateX(${xRotation}deg) rotateY(${yRotation}deg) translateY(${translateY}px)`;
             navbar.style.transform = `rotateX(${xRotation}deg) rotateY(${yRotation}deg) translateY(${translateY}px)`;
         };
 
@@ -77,7 +73,6 @@ const TransitionProvider = ({ children }) => {
 
     return (
         <AnimatePresence>
-            <div className='blurBox' ref={blurBoxRef}/>
             <div className='navbar' ref={navbarRef}>
                 <Navbar />
             </div>

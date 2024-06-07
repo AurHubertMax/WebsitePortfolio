@@ -6,11 +6,6 @@ import TransitionProvider from '@/components/transitionProvider'
 
 const inter = Inter({ subsets: ['latin'] })
 
-const monsterrat = Montserrat({
-  subsets: ['latin'],
-  weight: '400',
-})
-
 const poiretOne = Poiret_One({
   subsets: ['latin'],
   weight: '400',

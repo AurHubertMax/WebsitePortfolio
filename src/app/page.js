@@ -76,29 +76,17 @@ const majorMonoFont = Major_Mono_Display({
 export default function Home() {
   const [startAnimation, setStartAnimation] = useState(false);
   const [lineAnimation, setLineAnimation] = useState(false);
-  const [welcomMessageVisible, setWelcomeMessageVisible] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setWelcomeMessageVisible(false);
       setStartAnimation(true);
-    }, 3000);
+    }, 100);
 
     return () => clearTimeout(timer);
   }, []);
 
   return (
     <div className={styles.homeContainer}>
-      <div className={styles.welcomeMessageContainer}>
-        <motion.p
-          variants={textVariants}
-          initial="hidden"
-          animate={welcomMessageVisible ? "visible" : "hidden"}
-          transition={{ duration: 2, ease: "easeInOut" }}
-        >
-          Hello! I'm Maximus..
-        </motion.p>
-      </div>
       <div className={styles.nameContainer}>
         <motion.svg
               xmlns="http://www.w3.org/2000/svg"
@@ -125,7 +113,7 @@ export default function Home() {
         variants={line}
         initial="hidden"
         animate={lineAnimation ? "visible" : "hidden"}
-        transition={{ duration: 2, ease: "easeInOut" }}
+        transition={{ duration: 1, ease: "easeInOut" }}
         
       />
       <motion.p
@@ -133,7 +121,7 @@ export default function Home() {
         variants={textVariants}
         initial="hidden"
         animate={lineAnimation ? "visible" : "hidden"}
-        transition={{ duration: 2, ease: "easeInOut" }}
+        transition={{ duration: 1, ease: "easeInOut" }}
       >
         Programmer • Software Developer • Web Developer
       </motion.p>
